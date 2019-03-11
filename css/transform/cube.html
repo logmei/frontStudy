@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+
+        .box{
+            transform-style: preserve-3d; /*子元素和本元素都展示为3D空间*/
+            perspective: 1000px; /*视距，眼睛靠近的距离*/
+            top: 326px;
+            left: calc((100%-200px)/2); /*动态计算左边距*/
+            /*left: -webkit-;*/
+            position: absolute; /**/
+            font-size: 30px;
+            font-weight: bold;
+            /* transform: rotateX(6deg) rotateY(0deg) rotateZ(74deg); */
+            transition:transform 5s linear  ease-in;
+        }
+        .box:hover{
+            transform:rotate3D(1,1,1,30deg);
+        }
+       .box div{
+           width: 200px;
+           height: 200px;
+           border: 1px solid red;
+           position: absolute;/*absolute和fixed都可以   只是fixed是相对可视窗口进行定位*/
+           /* float: left; 不可以用float*/
+       }
+       .box span{
+           height: 100%;
+           width: 100%;
+           display: inline-block;
+           /*vertical-align: middle; 该属性对内联元素起作用， inline-block呈递的是块对象所以，vertical-align不起作用*/
+           text-align: center;
+           line-height: 200px;
+       }
+       /*每个面都是相对3D空间进行移动所以都是用的translateZ*/
+       .box div:nth-child(1){
+           background: rgba(0,0,0,0.4);
+           transform: translateZ(100px);
+       }
+       .box div:nth-child(2){
+           background: rgba(27, 255, 44, 0.40);
+           transform: translateZ(-100px);
+       }
+       .box div:nth-child(3){
+           background: rgba(247, 255, 50, 0.40);
+           transform: rotateY(90deg) translateZ(-100px);
+       }
+       .box div:nth-child(4){
+           background: rgba(204, 54, 42, 0.40);
+           transform: rotateY(90deg) translateZ(100px);
+       }
+       .box div:nth-child(5){
+           background: rgba(24, 48, 255, 0.40);
+           transform: rotateX(90deg) translateZ(-100px);
+       }
+       .box div:nth-child(6){
+           background: rgba(146, 206, 255, 0.40);
+           transform: rotateX(90deg) translateZ(100px);
+       }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div><span>1</span></div>
+    <div><span>2</span></div>
+    <div><span>3</span></div>
+    <div><span>4</span></div>
+    <div><span>5</span></div>
+    <div><span>6</span></div>
+</div>
+
+</body>
+</html>
