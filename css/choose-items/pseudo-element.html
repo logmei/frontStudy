@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        p::first-letter{
+            font-size: 30px;
+            font-weight: bold;
+            float: left;
+        }
+        p::first-line{
+            color: #ff3366;
+        }
+        p:nth-child(2):before{
+            display: inline-block;
+            border: 1px solid #eeeccc;
+            content: "";
+        }
+        p:nth-child(2)::before{
+            content: "beforebeforebeforebeforebeforebefore";
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>hello world!hello world!hello world
+        !hello world!hello world!hello world!
+        hello world!hello world!hello world!
+        asdklfjfjfjfjfjfjfjfjfjf
+        jfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+        fjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjf
+        jfjfjfjfjfjfjfj</p>
+    <p>hello world!hello world!hello world
+        !hello world!hello world!hello world!
+        hello world!hello world!hello world!
+        asdklfjfjfjfjfjfjfjfjfjf
+        jfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj
+        fjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjf
+        jfjfjfjfjfjfjfj</p>
+</div>
+
+
+</body>
+</html>

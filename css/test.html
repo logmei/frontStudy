@@ -1,0 +1,52 @@
+<style>
+    div{
+        border: 1px solid #222222;
+    }
+
+    .dd{
+        width: 200px;
+        height: 200px;
+    }
+    .dd div:nth-child(1){
+        width: 100px;
+        height: 100%;
+    }
+</style>
+<div class="dd">
+    所谓UI选择器：就是指定的样式只有当元素处于某种状态下时，才起作用，在默认状态下不起作用！
+
+    浏览器兼容性：
+
+    E:hover                 支持firefox、safari、Opera、ie8、chrome            ------------
+    E:active                 支持firefox、safari、Opera、chrome                      不支持ie8
+    E:focus                 支持firefox、safari、Opera、ie8、chrome            -------------
+    E:enabled             支持firefox、safari、Opera、chrome                    不支持ie8
+    E:disabled            支持firefox、safari、Opera、chrome                    不支持ie8
+    E:read-only          支持firefox、Opera                             不支持ie8、safari、chrome
+    E:read-write         支持firefox、Opera                             不支持ie8、safari、chrome
+    E:checked           支持firefox、safari、Opera、chrome                    不支持ie8
+    E::selection           支持firefox、safari、Opera、chrome                  不支持ie8
+    E:default              只支持firefox                                                          ------------
+    E:indeterminate    只支持chrome                                                      ------------
+    E:invalid               支持firefox、safari、Opera、chrome                 不支持ie8
+    E:valid                  支持firefox、safari、Opera、chrome                  不支持ie8
+    E:required            支持firefox、safari、Opera、chrome                  不支持ie8
+    E:optional             支持firefox、safari、Opera、chrome                 不支持ie8
+    E:in-range            支持firefox、safari、Opera、chrome                 不支持ie8
+    E:out-of-rang        支持firefox、safari、Opera、chrome                 不支持ie8
+    下面就其使用做详细的说明;
+
+    1、选择器E:hover、E:active和E:focus
+    1)、E:hover选择器被用来指定当鼠标指针移动到元素上时元素所使用的样式
+    使用方法：
+    <元素>:hover{
+        CSS样式
+        }
+        我们可以在“<元素>”中添加元素的type属性。
+            例：
+            input[type="text"]:hover{
+            CSS样式
+            }
+            2)、E:active选择器被用来指定元素被激活时使用的样式
+            3)、E:focus选择器被用来指定元素获得光标聚焦点使用的样式，主要是在文本框控件获得聚焦点并进行文字输入时使用。
+</div>

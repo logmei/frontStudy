@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            list-style: none;
+            /* border: 1px solid #4afaff; */
+            border-top: 1px solid #e1e1e1;
+            width: 300px;
+            background: #858582;
+            color: #fff;
+            position: relative;/*子元素的absolute状态元素需要找到最近的relative,fixed和absolute类型的父元素*/
+        }
+        li:last-child{
+            border-bottom: 1px solid #e1e1e1;
+        }
+        li:after{
+            content: "";
+            color: #ffffff;
+            width: 0;
+            height: 0;
+            border: 5px solid #ffffff;/*利用border来画4个边*/
+            border-color: transparent transparent transparent #ffffff;
+            -moz-border-color: transparent transparent transparent #ffffff;
+            -webkit-border-color: transparent transparent transparent #ffffff;
+            -o-border-color: transparent transparent transparent #ffffff;
+            -ms-border-color: transparent transparent transparent #ffffff;
+            /* display: block; */
+            position: absolute;/*需要是块状元素才可以是正方形，display:block也可以只是不能定位，absolute脱离文档流为块元素；不设置为块则为行内元素竖直方向被拉伸*/
+            right: 10px;
+            top: 5px;
+
+        }
+        .div-test{
+            display:flex;
+            justify-content: space-around;
+        }
+        .div-test div:nth-child(1){
+            width: 300px;
+            height: 300px;
+            border: 30px solid #eeeeee;
+            border-radius: 30px;
+        }
+        .div-test div:nth-child(2){
+            width: 300px;
+            height: 100px;
+            border: 30px solid #eeeeee;
+            border-width: 20px 5px 30px 60px;
+            border-radius: 100px;
+        }
+        .div-test div:nth-child(3){
+            width: 200px;
+            height: 100px;
+            border: 1px solid #eeeeee;
+            border-radius: 100px 100px 0 0 ;
+        }
+        .div-test div:nth-child(4){
+            width: 200px;
+            height: 200px;
+            border: 1px solid #eeeeee;
+            border-radius: 200px 0 0 0 ;
+        }
+        .div-test div:nth-child(5){
+            width: 200px;
+            height: 100px;
+            border: 1px solid #eeeeee;
+            border-radius: 100px/50px ;
+        }
+        .div-test1{
+            margin-top: 10px;
+            /*position: relative;*/
+            /*display: inline-block;*/
+            /*overflow: hidden;*/
+            display: flex;
+            justify-content: space-around;
+        }
+        .div-test1:after{
+            /*content: "";*/
+            /*display: block;*/
+            /*clear: both;*/
+        }
+        .div-test1 div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #cccccc;
+            float: left;
+        }
+        .div-test1 div:nth-child(1){
+
+            box-shadow: 0 0 2px #06c;
+        }
+        .div-test1 div:nth-child(2){
+            box-shadow: 0 0 2px 2px #06c;
+        }
+        .div-test1 div:nth-child(3){
+            box-shadow: 0 0 0 2px #06c;
+        }
+        .div-test1 div:nth-child(4){
+            border: 12px solid blue;
+            background: orange;
+            border-top-left-radius: 60px 90px;
+            border-bottom-right-radius: 60px 90px;
+            box-shadow: 64px 64px 24px 40px rgba(0,0,0,0.4),12px 12px 0px 18px rgba(0,0,0,0.4);
+        }
+        .div-test1 div:nth-child(5){
+            border: 12px solid blue;
+            background: orange;
+            border-top-left-radius: 60px 90px;
+            border-bottom-right-radius: 60px 90px;
+            box-shadow: 64px 64px 24px 40px rgba(0,0,0,0.4),12px 12px 0px 18px rgba(0,0,0,0.4) inset;
+        }
+
+
+
+        /*box-shadow不能应用在img上，需要在img外面增加容器*/
+        .div-image{
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .div-image div{
+            border: 1px solid #cccccc;
+        }
+        .div-image div:nth-of-type(1){
+            box-shadow: inset 0 0 50px 4px #eee;
+            /* position: relative; */
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .div-image div:nth-of-type(1) img{
+            position: relative;/*设置为relative才可以使z-index层叠起作用*/
+            z-index: -1;/*使img在div下面*/
+            vertical-align: top; /*使图片铺满外容器*/
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="div-test">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="div-test1">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="div-image">
+    <div><img src="../img/x.jpg"></div>
+</div>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>

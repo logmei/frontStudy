@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .title{
+            /*text-align: center;*/
+        }
+        .instruction{
+            margin: 10px 20px;
+        }
+        .content{
+            background: #3a3a3a;
+            /* border: 10px solid #dcdcdc; */
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px #9999a6, inset 0 0 3px #b1b097;
+            font-size: 16px;
+            text-shadow: 2px 2px 2px #5b5b5b;
+            background-image: -webkit-linear-gradient(left top,rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.6));
+            background-image: -moz-linear-gradient(left top,rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+            background-image: -o-linear-gradient(left top,rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+            background-image: linear-gradient(left top,rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+            color: #dddddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        h2{
+            text-indent: 20px;
+        }
+        .demo{
+            display: flex;
+            justify-content: space-around;
+            height: 300px;
+        }
+        .demo_float .inital{
+            width: 300px;
+            height: 300px;
+        }
+       .demo_float .inital div:nth-child(1){
+            background: red;
+            width:100px ;
+            height: 100px;
+            float:left;
+        }
+       .demo_float .inital div:nth-child(2){
+            background: #ffe4da;
+            width: 200px;
+            height: 100%;
+        }
+
+        .demo_float .bfc_demo{
+            width: 300px;
+            height: 300px;
+        }
+        .demo_float .bfc_demo div:nth-child(1){
+            background: red;
+            width:100px ;
+            height: 100px;
+            float:left;
+        }
+        .demo_float .bfc_demo div:nth-child(2){
+            background: #ffe4da;
+            overflow: hidden;
+            width: 200px;
+            height: 100%;
+            color: #000000;
+        }
+
+        .demo_clear_float .inital{
+            border: 1px solid;
+        }
+       .demo_clear_float .inital div:nth-child(1){
+            background: red;
+            width:100px ;
+            height: 300px;
+            float:left;
+        }
+       .demo_clear_float .inital div:nth-child(2){
+            background: #ffe4da;
+           color: #000000;
+        }
+
+        .demo_clear_float .bfc_demo{
+            border: 1px solid;
+            overflow: auto;
+        }
+       .demo_clear_float .bfc_demo div:nth-child(1){
+            background: red;
+            width:100px ;
+            height: 300px;
+            float:left;
+
+        }
+       .demo_clear_float .bfc_demo div:nth-child(2){
+            background: #ffe4da;
+            color: #000000;
+        }
+
+        .demo_over .inital div:not(.wrap),.demo_over .bfc_demo div:not(.wrap){
+            margin: 30px;
+            width: 200px;
+            height: 100px;
+            background: #cc9411;
+        }
+        .wrap{
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<div class="instruction">
+    <h2>什么是BFC？</h2>
+    <div class="content"><p>blocking format context(块级格式化上下文),只有block-level box参与</p></div>
+    <h2>BFC布局规则</h2>
+    <div class="content">
+        <p>
+            <label class="order_label">1、</label>内部block-level box垂直排列
+        </p>
+        <p>
+            <label class="order_label">2、</label>垂直方向上的距离有margin决定，属于同一个BFC的两个相邻的box的margin重叠，每个元素的margin box与包含块左边边界相接处。浮动元素也是如此
+        </p>
+        <p>
+            <label class="order_label">3、</label>BFC区域不与float box重叠
+        </p>
+        <p>
+            <label class="order_label">4、</label>BFC是个独立容器不影响外部元素
+        </p>
+        <p>
+            <label class="order_label">5、</label>计算BFC高度时，浮动元素也参与计算
+        </p>
+    </div>
+    <h2>如何实现BFC？</h2>
+    <div class="content">
+        <p>
+            <label class="order_label">1、</label>根元素
+        </p>
+        <p>
+            <label class="order_label">2、</label>float:不为none
+        </p>
+        <p>
+            <label class="order_label">3、</label>position:absolute或fixed
+        </p>
+        <p>
+            <label class="order_label">4、</label>display:flex(使子元素的float,clear,vertication无效)，inline-block，table-cell,table-caption
+        </p>
+        <p>
+            <label class="order_label">5、</label>overflow:不为visible
+        </p>
+    </div>
+
+    <h2>作用与原理</h2>
+    <div class="content">
+        <p class="title">
+            自适应两栏布局
+        </p>
+        <div class="demo_float demo">
+            <div class="inital">
+                <div>float块</div>
+                <div></div>
+            </div>
+            <div class="bfc_demo">
+                <div>float块</div>
+                <div>
+                    运用：BFC区域不与float box重叠规则<br>
+                    设置本尊为bfc区域(除了position设置不管用其他都管用)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <p class="title">
+            清除内部浮动<br>
+            外部不设置高度，浮动块设置高度
+        </p>
+        <div class="demo_clear_float demo">
+            <div style="width: 300px;height: auto">
+                <div class="inital">
+                    <div>float块</div>
+                    <div>运用：计算BFC高度时，浮动块也参与规则<br>
+                        未设置父元素为BFC</div>
+                </div>
+            </div>
+            <div  style="width: 300px;height: auto">
+                <div class="bfc_demo">
+                    <div>float块</div>
+                    <div>
+                        运用：计算BFC高度时，浮动块也参与规则<br>
+                        为达到清除内部浮动，设置父元素为BFC
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content">
+        <p class="title">
+            防止垂直 margin 重叠<br>
+            顶层元素与父元素margin重叠(消除办法)：<br>
+           1、添加border或padding<br>
+            2、设置父元素为BFC<br>
+            相同子元素消除margin重叠，则利用BFC的，属于同一个BFC的块的margin重合规则，让子元素称为不同的BFC，给子元素裹一层容器
+        </p>
+        <div class="demo_over demo">
+            <div style="width: 500px;height: 300px">
+                <div class="inital">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div  style="width: 500px;height: 300px">
+                <div class="bfc_demo">
+                    <div></div>
+                    <div class="wrap">
+                        <div></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

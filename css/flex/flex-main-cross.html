@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+
+
+        /*注意 样式设置*/
+        .becareful_cont{
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+        }
+        .becareful{
+            margin: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 0 2px #928f8f;
+            border: none;
+            border-radius: 5px;
+            background: #f1f1f1;
+            color: #393939;
+            text-shadow: 1px 1px 1px #eeeccc;
+        }
+        .becareful_item{
+            margin: 5px 21px;
+            display: flex;
+            flex-direction: row;
+        }
+        /*说明中的样式*/
+        .content{
+            margin: 10px 0;
+            padding: 10px 20px;
+            /* border-bottom: 1px solid #ccc; */
+            background: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #ccc;
+        }
+        .content p{
+            margin-bottom: 10px;
+        }
+        .instruction{
+            padding: 0px 20px;
+        }
+        .containers{
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        /*测试中的div样式*/
+        .outer_container{
+            border: 1px solid #1bff2c;
+            width: 500px;
+            height: 100px;
+            font-size: 0;
+            box-sizing: border-box;/*width包括内容、border、padding*/
+            display: flex;
+            display: -webkit-flex;/*webkit内核浏览器*/
+            transition:width 0.5s ease-in;
+            -moz-transition:width 0.5s ease-in;
+            -webkit-transition:width 0.5s ease-in;
+            -o-transition:width 0.5s ease-in;
+            margin: 10px 10px;
+        }
+        .outer_container div:first-child{
+            border: 1px solid #1830ff;
+            height: 20px;
+            width: 100px;
+        }
+        .outer_container  div:nth-child(2){/*值父元素下面第2个元素，且这个元素是div，若不是则选择失败*/
+            border: 1px solid #000;
+            height: 50px;
+            width: 100px;
+        }
+        .outer_container  div:nth-child(3){
+            border: 1px solid #fafa55;
+            height: 50px;
+            width: 100px;
+        }
+
+        .outer_container div:last-child{
+            border: 1px solid #ff3366;
+            width: 200px;
+            height: 70px;
+        }
+
+        .content:nth-of-type(1) .outer_container{/*父元素下的第n个ele元素*/
+            color: green;
+            background: #cfeec7;
+        }
+
+
+        .content:nth-of-type(2) .outer_container:nth-child(1){
+            width: 300px;
+            color: red;
+            background: #ff9e79;
+            flex-wrap:wrap;
+        }
+        .content:nth-of-type(2) .outer_container:nth-child(2){
+            width: 300px;
+            color: red;
+            background: #ff9e79;
+            flex-wrap:wrap-reverse;
+        }
+        .content:nth-of-type(3) .outer_container{
+            width: 800px;
+            background: #92ceff;
+        }
+        .content:nth-of-type(3) .outer_container:nth-of-type(1){
+            justify-content: flex-start;
+            order: 1;
+        }
+        .content:nth-of-type(3) .outer_container:nth-of-type(2){
+            justify-content: flex-end;
+
+        }
+        .content:nth-of-type(3) .outer_container:nth-of-type(3){
+           justify-content: center;
+        }
+        .content:nth-of-type(3) .outer_container:nth-of-type(4){
+           justify-content: space-between;
+            order: 3;
+        }
+        .content:nth-of-type(3) .outer_container:nth-of-type(5){
+            justify-content: space-around;
+            order: 2;
+        }
+
+
+        .content:nth-of-type(4) .outer_container{
+            width: 300px;
+            height: 300px;
+            background: #92ceff;
+            flex-wrap: wrap;
+        }
+        .content:nth-of-type(4) .outer_container:nth-of-type(1){
+            align-items: flex-start;
+            align-content: flex-start;
+        }
+        .content:nth-of-type(4) .outer_container:nth-of-type(2){
+            align-items: flex-end;
+            align-content: flex-end;
+        }
+        .content:nth-of-type(4) .outer_container:nth-of-type(3){
+            align-items: center;
+            align-content: center;
+        }
+        .content:nth-of-type(4) .outer_container:nth-of-type(4){
+            align-items: baseline;
+            align-content: space-between;
+        }
+        .content:nth-of-type(4) .outer_container:nth-of-type(5){
+            align-items: stretch;
+            align-content: space-around;
+        }
+
+
+
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+<div class="becareful">
+    <h3>注意:</h3>
+    <div class="becareful_item"><span>1、</span>
+        <div class="becareful_cont">
+            <div>display:flex</div>
+            <div>display:-webkit-flex(webkit内核浏览器)</div>
+        </div>
+    </div>
+    <div class="becareful_item">
+        <span>2、</span> <div class="becareful_cont">box-sizing:border-box(width包括内容、border、padding)</div>
+    </div>
+
+</div>
+
+<div class="instruction">
+<h2>flex-direction</h2>
+    <div class="content">
+       <p> 1、flex-direction:row 水平排列（默认排列方式）;width之和>容器宽度，浏览器将减小项目宽度<br/>
+           2、flex-wrap:nowrap 不换行（默认方式）<br>
+           3、flex-flow:row nowrap;(简写方式)
+          </p>
+
+            <div class="outer_container" >
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+
+    </div>
+
+    <div class="content">
+        <p> 1、flex-direction:row 水平排列（默认排列方式）;<br>
+            2、flex-wrap:wrap 换行；wrap-reverse换后后反向排列<br>
+            3、flex-flow:row wrap;(简写方式)
+        </p>
+        <div class="containers">
+            <div class="outer_container" >
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+            <div class="outer_container" >
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="content">
+        <p>justify-content(主轴对齐方式)：flex-start,flex-end,center,space-between,space-around
+        </p>
+        <div class="outer_container" >
+            <div><p>1111111111111111111</p></div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+
+    </div>
+
+    <div class="content">
+        <p>align-items（交叉轴对齐方式：单行）：flex-start,flex-end,center,baseline(内容对齐),stretch(若不设置内容高度则填充满)
+            align-content(交叉轴对齐方式：多行):flex-start,flex-end,center,space-between,space-around,stretch
+        </p>
+        <div class="containers">
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+            </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

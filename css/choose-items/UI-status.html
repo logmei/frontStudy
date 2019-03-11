@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input[type="text"]:focus{
+            background: #1bff2c;
+        }
+        input[type="text"]:hover{
+            background: #eeeccc;
+        }
+        input[type="text"]:active{
+            background: #f3fa17;
+        }
+        input[type="text"]:disabled{
+            background: #cccccc;
+        }
+        input:read-only{
+            background: #1830ff;
+        }
+        input:checked{
+            outline: 1px solid #1830ff;
+        }
+        /*处于选中状态*/
+        ::selection{
+            background: #A8AED8;
+        }
+        /*符合校验*/
+        input[type="email"]:valid{
+            color: #cccccc;
+        }
+        /*不符合校验*/
+        input[type="email"]:invalid{
+            color: red;
+        }
+
+        /*必填项*/
+        input:required{
+            background: #ff9e79;
+        }
+        /*不必填项*/
+        input:optional{
+            background: #4afaff;
+        }
+        /*范围之内*/
+        input[type="number"]:in-range{
+            color: #393939;
+        }
+        /*范围之外*/
+        input[type="number"]:out-of-range{
+            color: #ff3366;
+        }
+
+        label[title^=logmei]{
+            color: #eeeccc;
+        }
+
+        label[title$=ss1]{
+            color: #ff3366;
+        }
+        label[title*=ll]{
+            color: #1bff2c;
+        }
+
+        label[title~=sf]{
+            color: #4afaff;
+        }
+
+    </style>
+</head>
+<body>
+<form>
+    <div class="row">
+        <label title="logmei liulei ss">name:</label><input type="text">
+    </div>
+    <div class="row">
+        <label  title="logmei lisfulei ss1">disable:</label><input type="text" disabled>
+    </div>
+    <div class="row">
+        <label  title="logmei liulllei ss">read-only:</label><input type="text" readonly>
+    </div>
+    <div class="row">
+        <label  title="logmei liulei sf ss">checkbox:</label>
+        <input type="checkbox" name="ch">check1
+        <input type="checkbox" name="ch">check2
+    </div>
+    <div class="row">
+        <label title="logmei liulei sfs ss">email:</label><input type="email" required="required">
+    </div>
+    <div class="row">
+        <label>range:</label><input type="number" min="0" max="100" value="0">
+    </div>
+    <div class="row">
+        <label>name:</label><input type="text">
+    </div>
+    <div class="row">
+        <label>name:</label><input type="text">
+    </div>
+</form>
+
+</body>
+</html>

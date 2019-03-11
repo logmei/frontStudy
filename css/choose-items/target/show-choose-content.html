@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+
+        }
+        body{
+           background: #A8AED8;
+            color: #222222;
+        }
+        a{
+            text-decoration: none;
+            opacity: 0.5;
+            flex-basis: 66px;
+        }
+        a:focus,a:visited,a:hover{
+            opacity: 1;
+        }
+        .content:target,:target a{
+           opacity:1 ;
+            z-index: 5;
+        }
+        .content{
+            z-index: 1;
+            background: #D6D8E7;
+            overflow: auto;
+            position: absolute;
+            display: inline-block;
+            opacity: 0.5;
+        }
+        .content:nth-of-type(2){/*值父元素下面第2个元素，且这个元素是content样式*/
+            width: 20%;
+            height: 300px;
+            left: 10%;
+            top: 200px;
+        }
+        .content:nth-of-type(3){
+            width: 30%;
+            height: 300px;
+            left: 30%;
+            top: 100px;
+        }
+        .content:nth-of-type(4){
+            width: 20%;
+            height: 300px;
+            left: 60%;
+            top: 200px;
+        }
+        .bar{
+            display: flex;
+            bottom: 20px;
+            position: absolute;
+            left: 18%;
+            right: 18%;
+            background: #ffffff;
+            z-index: 10;
+            justify-content: center;
+        }
+
+        .title{
+            background: #ffffff;
+        }
+        .cont{
+            padding: 5px 10px;
+        }
+        .bar:nth-child(1){
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="bar">
+        <a href="#trash"><img src="../../img/gnome-fs-trash-empty.png"><br>trash</a>
+        <a href="#inbox"><img src="../../img/inbox-48.png"><br>inbox</a>
+        <a href="#reader"><img src="../../img/news-reader-48.png"><br>reader</a>
+    </div>
+
+    <div id="trash" class="content">
+        <div class="title">trash</div>
+        <div class="cont">
+            trashtrashtrashtrashtrashtrash
+            trashtrashtrashtrashtrashtrash
+            trashtrashtrashtrashtrashtrash
+            trashtrashtrashtrashtrashtrash
+            trashtrashtrashtrashtrashtrash
+            trashtrashtrashtrashtrashtrash
+        </div>
+
+    </div>
+    <div id="inbox"  class="content">
+        <div class="title">inbox</div>
+        <div class="cont">
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+            inboxinboxinboxinboxinboxinboxinboxinboxinboxinbox
+        </div>
+
+    </div>
+    <div id="reader"  class="content">
+        <div class="title"> readerr</div>
+        <div class="cont">
+            readerreaderreaderreaderreaderreader
+            readerreaderreaderreaderreaderreader
+            readerreaderreaderreaderreaderreader
+            readerreaderreaderreaderreaderreader
+            readerreaderreaderreaderreaderreader
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

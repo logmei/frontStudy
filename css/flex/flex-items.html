@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+
+
+        /*注意 样式设置*/
+        .becareful_cont{
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+        }
+        .becareful{
+            margin: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 0 2px #928f8f;
+            border: none;
+            border-radius: 5px;
+            background: #f1f1f1;
+            color: #393939;
+            text-shadow: 1px 1px 1px #eeeccc;
+        }
+        .becareful_item{
+            margin: 5px 21px;
+            display: flex;
+            flex-direction: row;
+        }
+        /*说明中的样式*/
+        .content{
+            margin: 10px 0;
+            padding: 10px 20px;
+            /* border-bottom: 1px solid #ccc; */
+            background: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #ccc;
+        }
+        .content p{
+            margin-bottom: 10px;
+        }
+        .instruction{
+            padding: 0px 20px;
+        }
+        .containers{
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        /*测试中的div样式*/
+        .outer_container{
+            border: 1px solid #1bff2c;
+            width: 500px;
+            height: 100px;
+            /*font-size: 0;*/
+            box-sizing: border-box;/*width包括内容、border、padding*/
+            /*box-sizing: content-box;*//*默认情况只是内容*/
+            display: flex;
+            display: -webkit-flex;/*webkit内核浏览器*/
+            transition:width 0.5s ease-in;
+            -moz-transition:width 0.5s ease-in;
+            -webkit-transition:width 0.5s ease-in;
+            -o-transition:width 0.5s ease-in;
+            margin: 10px 10px;
+        }
+        .outer_container div:first-child{
+            border: 1px solid #1830ff;
+            height: 20px;
+            width: 100px;
+        }
+        .outer_container  div:nth-child(2){/*值父元素下面第2个元素，且这个元素是div，若不是则选择失败*/
+            border: 1px solid #000;
+            height: 50px;
+            width: 100px;
+        }
+        .outer_container  div:nth-child(3){
+            border: 1px solid #fafa55;
+            height: 50px;
+            width: 100px;
+        }
+
+        .outer_container div:last-child{
+            border: 1px solid #ff3366;
+            width: 200px;
+            height: 70px;
+        }
+
+
+        .content:nth-of-type(1) .outer_container{
+            width: 800px;
+            background: #92ceff;
+        }
+
+        .content:nth-of-type(1) .outer_container:nth-of-type(2) div:first-child{
+            flex: auto;
+        }
+        .content:nth-of-type(1) .outer_container:nth-of-type(3){
+            width: 300px;
+        }
+
+        .content:nth-of-type(1) .outer_container:nth-of-type(3) div:first-child{
+            flex: none;
+        }
+
+        .content:nth-of-type(1) .outer_container:nth-of-type(4) div:first-child{
+            flex: 1 0 auto;
+        }
+
+
+        .content:nth-of-type(2) .outer_container{
+            width: 800px;
+            background: #92ceff;
+        }
+
+        .content:nth-of-type(2) .outer_container:nth-of-type(2) div{
+            flex-grow: 1;
+        }
+        .content:nth-of-type(2) .outer_container:nth-of-type(3) div{
+            flex-grow: 1;
+        }
+        .content:nth-of-type(2) .outer_container:nth-of-type(3) div:last-child{
+            flex-grow: 2;
+        }
+
+
+        .content:nth-of-type(3) .outer_container{
+            width: 400px;
+            background: #92ceff;
+        }
+
+        .content:nth-of-type(3) .outer_container:nth-of-type(2) div:first-child{
+            flex-shrink: 0;
+        }
+
+        .content:nth-of-type(4) .outer_container{
+            width: 800px;
+            background: #92ceff;
+        }
+
+        .content:nth-of-type(4) .outer_container:nth-of-type(2) div:first-child{
+            flex-basis: 200px;
+        }
+
+        .content:nth-of-type(5) .outer_container{
+            width: 800px;
+            background: #92ceff;
+        }
+
+        .content:nth-of-type(5) .outer_container:nth-of-type(2) div:first-child{
+            align-self: flex-start;
+        }
+        .content:nth-of-type(5) .outer_container:nth-of-type(3) div:first-child{
+            align-self: flex-end;
+        }
+        .content:nth-of-type(5) .outer_container:nth-of-type(4) div:first-child{
+            align-self: center;
+        }
+        .content:nth-of-type(5) .outer_container:nth-of-type(5) div:first-child{
+            align-self: baseline;
+        }
+        .content:nth-of-type(5) .outer_container:nth-of-type(6) div:first-child{
+            align-self: stretch;
+            height: 100%;
+        }
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+<div class="becareful">
+    <h3>注意:</h3>
+    <div class="becareful_item"><span>1、</span>
+        <div class="becareful_cont">
+            <div>display:flex</div>
+            <div>display:-webkit-flex(webkit内核浏览器)</div>
+        </div>
+    </div>
+    <div class="becareful_item">
+        <span>2、</span> <div class="becareful_cont">box-sizing:border-box(width包括内容、border、padding)</div>
+    </div>
+
+</div>
+
+<div class="instruction">
+<h2>项目属性</h2>
+    <div class="content">
+        <p>flex：flex-grow,flex-shrink,flex-basis的简写，默认值为0 1 auto 后两个属性可选 <br>
+            两个快捷键 auto(1 1 auto) 和none(0 0 auto)<br>
+            1、默认<br>
+            2、第一个元素auto<br>
+            3、第一个元素none<br>
+            4、第一个元素1 0 auto
+        </p>
+
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+    </div>
+    <div class="content">
+       <p>flex-grow：放大比例，默认值为0 <br>
+           1、都为零<br>
+           2、都为1<br>
+           3、前3个为1，最后一个为2
+          </p>
+
+            <div class="outer_container" >
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+    </div>
+    <div class="content">
+        <p>flex-shrink：缩放比例，默认值为1(flex默认横向排放，不换行，若没有空间则缩放)<br>
+            1、默认缩放<br>
+            2、其中第一个项目为零不缩放
+        </p>
+
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <p>flex-basis：分配多余空间之前，项目占据主轴空间，浏览器根据这个属性计算是否有多余空间，默认值是auto即项目的本来大小<br>
+            1、默认项目大小<br>
+            2、其中第一个项目为200px
+        </p>
+
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <p>align-self：单个项目与其他项目不一样的对齐方式，可覆盖align-items属性，默认auto继承父元素的align-items,若没有父元素则等同于strech<br>
+           align-self:auto|flex-start|flex-end|center|baseline|stretch
+        </p>
+
+        <div class="outer_container" >
+            <div style="order: 4">1</div>
+            <div style="order: 1">2</div>
+            <div style="order: 3">3</div>
+            <div style="order: 2">4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="outer_container" >
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
