@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="css/css.css" type="text/css" media="screen" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        @import "css/css1.css" screen;
+        @import "css/css1.css" print;
+        @media screen and (max-width: 600px){
+            body{
+                color: blueviolet;
+                background: #ffffff;
+            }
+        }
+        @media screen and(min-width:600px){
+            img[data-src-600px]{
+                content: attr(data-src-600px,url);
+            }
+        }
+        @media screen and (min-width:800px) {
+            img[data-src-800px]{
+                content: attr(data-src-800px,url);
+            }
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+<h1>媒体特性和响应式布局</h1>
+<h3>1、设置media标签,告诉浏览器设备宽度为作为视图宽度并禁止初始的缩放。user-scalable=no能够解决ipad切换横屏之后需要触摸才能回到具体尺寸的问题</h3>
+<p><media name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no"></p>
+<h3>2、通过媒介查询来设置样式</h3>
+<p>@media screen and (max-width=980px){
+    }</p>
+<h3>3、设置多种视图宽度</h3>
+<p>/** iPad **/
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {}
+    /** iPhone **/
+    @media only screen and (min-width: 320px) and (max-width: 767px) {}</p>
+
+<div  style="width: 50%;height: 50%">
+    <h3>注意：</h3>
+    <p>
+        <h4>1、宽度使用百分比</h4>
+        <div style="width: 100%;height: 100%"></div>
+        <h4>2、处理图片缩放</h4>
+        <p>(1)、(img的height设置为百分比不起作用)<br>
+        (2)、指定最大宽度，实际宽度小于最大宽度是为默认大小，实际宽度大于最大宽度时缩小<br>
+        (3)、用::before和::after伪元素和自定义属性</p>
+        <p><img src="img/x.jpg" style="width: 60%;height: 40%">
+        <img src="img/x.jpg" style="width: auto;max-width: 40%">
+        <img src="img/x.jpg" data-src-600px="img/inbox-48.png" data-src-800px="img/news-reader-48.png" alt=""/>
+        </p>
+    </p>
+</div>
+
+</body>
+</html>
