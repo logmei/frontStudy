@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <p>
+        <h3>组合原型链继承和借用构造函数继承</h3>
+        <p>利用call或apply实现继承<br>
+          优点：<br>
+          避免属性被所有实例共享<br>
+          可以给父类传参
+          缺点：<br>
+          是子类的实例，不是父类实例<br>
+          每次创建实例都会执行一遍</p>
+      </p>
+  <script>
+    function Person(name){
+      this.name = name
+      console.log('Person')
+    }
+    Person.prototype.getName = function(){
+      console.log(this.name)
+    }
+    function Child(name,sex){
+      console.log('child')
+      this.sex = sex
+      Person.call(this,name)
+    }
+    let prototype = new Object()
+    Child.prototype = prototype
+    prototype.__proto__ = Person.prototype
+    prototype.constructor = Child
+
+    let child = new Child('sss')
+    console.log(child)
+    </script>
+</body>
+</html>

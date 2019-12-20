@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //instanceof 可以正确判断对象的类型，内部机制是通过原型链是否能找到类型的prototype
+    function instanceOf(left,right){
+      //获取类型的prototype
+      let prototype = right.prototype
+      //获取对象的原型
+       left = left.__proto__
+      //判断对象的原型是否等于类型的原型
+      while(true){
+        if(left === null) return false
+        if(prototype === left) return true
+        left = left.__proto__
+      }
+    }
+
+    function A(){
+      console.log('a')
+      this.name='a'
+    }
+    let a = new A();
+
+    function B(){
+      console.log('b')
+    }
+    B.prototype = a
+
+    let b = new B()
+
+    function C(){
+      console.log('c')
+    }
+    C.prototype = b 
+
+    let c = new C()
+
+    console.log(instanceOf(c,Object))
+  </script>
+</body>
+</html>

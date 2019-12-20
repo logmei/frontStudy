@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h3>深拷贝</h3>
+    <h4>可用通过JSON.parse(JSON.stringify(object))来解决（处理深拷贝中性能最快的）</h4>
+    <p>但该方法存在局限性：
+      1、会忽略undefined<br>
+      2、会忽略Symbol类型的变量<br>
+      3、不能序列化函数
+    </p>
+    <h4>通过递归实现深拷贝</h4>
+  </div>
+  <script>
+    //深拷贝
+    //1、可用通过JSON.parse(JSON.stringify(object))来解决
+    let a = {
+      age : 12,
+      jobs : {
+        name:'s'
+      },
+      colors : [{
+        name:'a'
+      },{name:'b'}],
+      sex:undefined,
+      grade:Symbol('grade'),
+      getName:function(){
+        console.log('getName')
+      }
+    }
+    let b = JSON.parse(JSON.stringify(a))
+    console.log('b',b)
+
+    //2、递归
+    function deepCloneByRecursion(obj){
+      if(typeof obj !== 'object'){
+        return obj
+      }
+      // let type = Object.prototype.toString(obj).replace(/\S+\s(\S+)$/,'$1').toLowerCase()
+      let copy = Array.isArray(obj)?[]:{}
+        Object.keys(obj).forEach(key=>{
+          copy[key] = deepCloneByRecursion(obj[key])
+        })
+      return copy
+    }
+    let b1 = deepCloneByRecursion(a)
+    console.log('b1',b1)
+    //MessageChannel
+    // function st
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //实现new
+    function create(){
+      debugger
+      //创建一个新的对象
+      let obj = new Object()
+      /*
+      shift()是删除数组第一项并返回
+      arguments：如果入参是一个function，则第一项是构造函数
+      获取构造函数
+      */
+      // let Con = arguments.shift()//arguments是类对象,这样使用会报错
+      // let Con = arguments[0]//改变为this为arguments对象
+      let Con = [].shift.call(arguments)
+      //链接到原型
+      obj._proto_ = Con.prototype
+      //绑定this,执行构造函数
+      let result = Con.apply(obj,arguments)
+      //确保new出来的是一个对象
+      return typeof result === 'object' ? result : obj;
+
+    }
+    
+    function Foo(){
+      console.log('Foo')
+      this.name = 'logmei'
+    }
+
+    let foo = create(Foo)
+  </script>
+</body>
+</html>

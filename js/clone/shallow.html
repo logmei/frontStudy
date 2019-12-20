@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //浅拷贝
+    let a = {age:12}
+    let b = a
+    a.age = 1
+    console.log(b.age)
+    //Object.assign
+    let a1 = {age:12}
+    let b1 = Object.assign({},a1)
+    a1.age = 1
+    console.log(b1.age)
+    //展开运算符
+    let a2 = {age:12}
+    let b2 = {...a2}
+    a2.age = 1
+    console.log(b2.age)
+  </script>
+</body>
+</html>
