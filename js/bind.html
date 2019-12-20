@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    Function.prototype.mybind = function(context){
+      if(typeof this !== 'function'){
+        throw new TypeError('not function type')
+      }
+      const _this = this
+      const args = [...arguments].slice(1)
+      //返回一个新的函数
+      return function F(){
+        const params = [...arguments]
+        // 因为返回了一个函数，我们可以 new F()，所以需要判断
+        if(this instanceof F){
+          return new _this(...args,...params)
+        }
+        return _this.apply(context,args.concat(...params))
+
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    Function.prototype.myCall = function(obj){
+      debugger
+      const context = 
+      //将方法的this指向obj
+      obj.fn = this
+      const params = [...arguments].slice(1)
+      const result = obj.fn(...params) 
+      //删除fn属性
+      delete obj.fn
+      return result
+
+    }
+
+    function test(){
+      console.log(this.name)
+      console.log(arguments)
+    }
+    
+    const obj = {
+      name:'logmei'
+    }
+
+    test.myCall(obj,23,{aa:'22'})
+
+  </script>
+</body>
+</html>
