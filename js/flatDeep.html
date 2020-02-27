@@ -16,12 +16,21 @@
         return [...array,...flatDeep1(v)]
       },[])
     }
+    function flatDeep3(arr1){
+      const arr = []
+      arr1.forEach(v=>{
+        if(!Array.isArray(v))arr.push(v)
+        else arr.push(...flatDeep3(v))
+      })
+      return arr
+    }
     //数字数组扁平化后排序
     function flatDeepAndSort(arr){
       arr.toString().split(',').map(v=>parseInt(v)).sort((left,right)=>left-right)
     }
     console.log(flatDeep1(arr1))
     console.log(flatDeep1(arr2))
+    console.log(flatDeep3(arr1))
   </script>
   
   
