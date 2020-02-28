@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button">点击</button>
+  <script>
+    document.getElementById('button').addEventListener('click',throttle_(function(e){
+      console.log('11111111111',e,e.target)
+    },2000,true))
+    function throttle(fun,wait){
+      let timer = 0
+      return function(...args){
+        if(!timer) {
+          timer = window.setTimeout(()=>{
+            fun.apply(this,args)
+            timer = 0
+          },wait)
+        }
+        
+      }
+    }
+
+  function throttle_(fun,wait,immediately){
+    let timer = 0
+    return function(...args){
+      if(!timer){
+        if(immediately){
+          fun.apply(this,args)
+          timer = window.setTimeout(()=>{
+            timer = 0
+          },wait)
+        } else {
+
+          timer = window.setTimeout(()=>{
+            fun.apply(this,args)
+            timer = 0
+          },wait)
+        }
+      }
+    }
+  }
+  
+  function throttle(fun,wait){
+    let timer = 0
+    let timetemp = 0
+    return function(...args){
+      let now = + new Date()
+      if(!timetemp) timetemp = now
+      let remaining = wait - (now - timetemp)
+      if(!timer){
+        timer = window.setTimeout(()=>{
+          fun.apply(this,args)
+          timer = null
+          timetemp = + new Date()
+        },remaining)
+      } else if(remaining<=0 || remaining > wait){
+          if(timer){
+            window.clearTimeout(timer)
+            timer = null
+          }
+          timetemp = now
+          fun.apply(this,args)
+      } 
+    }
+  }
+
+  </script>
+</body>
+</html>

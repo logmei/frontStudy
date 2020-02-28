@@ -18,7 +18,7 @@
           child.push(getTree(n))
         }
       })
-      return {id:node.id,child:child}
+      return child.length>0?{id:node.id,child:child}:{id:node.id}
     }
 
     function getRootNode(arrAll){
