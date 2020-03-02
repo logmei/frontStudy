@@ -27,11 +27,28 @@
     }
     //数字数组扁平化后排序
     function flatDeepAndSort(arr){
-      arr.toString().split(',').map(v=>parseInt(v)).sort((left,right)=>left-right)
+        const arr1 = flatDeep1(arr)
+        const arr2 = arr1.map(v=>parseInt(v)).sort((left,right)=>left-right)
+        return removedouble_(arr2)
     }
-    console.log(flatDeep1(arr1))
-    console.log(flatDeep1(arr2))
-    console.log(flatDeep3(arr1))
+
+
+    function removedouble(arr){
+        const arr3 = arr.filter((v,index)=>{
+            
+            a = arr.slice(index+1)
+            return a.indexOf(v) === -1
+        })
+        return arr3
+    }
+
+    function removedouble_(arr){
+        return Array.from(new Set(arr)) 
+    }
+    // console.log(flatDeep1(arr1))
+    // console.log(flatDeep1(arr2))
+    // console.log(flatDeep3(arr1))
+    console.log(flatDeepAndSort(arr2))
   </script>
   
   
