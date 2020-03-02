@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Node{
+            constructor(element){
+                this.element = element
+                this.pre = null
+                this.next = null
+            }
+        }
+        class DobuleLinked{
+            constructor(){
+                this.length = 0
+                this.head = null
+                this.tail = null
+            }
+
+            insert(newNode,position){
+                const oldHead = this.head
+                if(position === 0 && this.length === 0){
+                    this.head = newNode
+                    this.tail = newNode
+                    this.length++ 
+                }
+                if(position>=0 && position<=this.length){
+                    if(position === 0){
+                        const currentNode = this.head
+                        currentNode.pre = newNode
+                        newNode.next = currentNode
+                        this.head = newNode
+                        
+                    } else if (position === this.length-1){
+                        const currentNode = this.tail
+                        currentNode.next = newNode
+                        newNode.pre = currentNode
+                        this.tail = newNode
+                        
+                    } else {
+                        for(let index=0;index<this.length;index++){
+                           const currentNode = this.head
+                            if(index !== position){
+                                this.head = currentNode.next
+                            } else {
+                                currentNode.pre.next = newNode
+                                newNode.next = currentNode
+                                currentNode.pre = newNode
+                                this.head = oldHead
+                                break
+                            }
+                        }
+                        
+                    }
+                    this.length++
+                    return true
+                } else {
+                    return false
+                }
+            }
+
+            
+        }
+
+        
+        
+    </script>
+</body>
+</html>
