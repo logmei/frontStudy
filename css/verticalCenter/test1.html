@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      .outer {
+        position: relative;
+        width: 800px;
+        height: 100%;
+        background: blue;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+      }
+
+      .inner {
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        background-color: red;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+
+      .box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <div class="box">
+          <p>
+            .inner {
+              </p>
+              <p>
+              position: absolute;
+            </p>
+            <p>
+              width: 200px;
+            </p>
+            <p>
+              height: 300px;
+            </p>
+            <p>
+              top:50%;
+            </p>
+            <p>
+              left: 50%;
+            </p>
+            <p>
+              transform: translate(-50%,-50%);
+            <p>
+            }
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

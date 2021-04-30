@@ -1,0 +1,26 @@
+{
+  "name": "frontstudy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logmei/frontStudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logmei/frontStudy/issues"
+  },
+  "homepage": "https://github.com/logmei/frontStudy#readme",
+  "dependencies": {
+    "cluster": "^0.7.7",
+    "express": "^4.17.1",
+    "koa": "^2.13.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  }
+}
