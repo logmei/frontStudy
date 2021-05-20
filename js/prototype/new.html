@@ -9,10 +9,10 @@
 <body>
   <script>
     //实现new
-    function create(){
+    function MyNew(){
       debugger
       //创建一个新的对象
-      let obj = new Object()
+      let obj = {} // new Object()
       /*
       shift()是删除数组第一项并返回
       arguments：如果入参是一个function，则第一项是构造函数
@@ -35,7 +35,7 @@
       this.name = 'logmei'
     }
 
-    let foo = create(Foo)
+    let foo = MyNew(Foo)
   </script>
 </body>
 </html>
