@@ -4,8 +4,10 @@ var data = {
         id:12
     }
 }
-observe(data)
 
+function $set(key,value){
+  defineReactive(obj,key,value)
+}
 //监听数据
 function observe(data){
     if(typeof data !== 'object') return
@@ -32,6 +34,16 @@ function definereactive(obj,key,val){
 
   })
 }
+
+observe(data)
+console.log(data.name,data.grade)
+data.dd = 1
+data.name = 3
+console.log(data.name,obj.dd)
+$set('ddd',5)
+console.log(data.ddd)
+obj.ddd = 6
+console.log(obj.ddd)
 //依赖收集
 class Dep{
 
