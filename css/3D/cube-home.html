@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,html{
+      height: 100%;
+    }
+    .container{
+      width: 100%;
+      height: 100%;
+      perspective: 500px;
+      transform-style: preserve-3d;
+    }
+    .z{
+      transform: translateZ(300px);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+    .scene{
+      width: 1024px;
+      height: 1024px;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform-style: preserve-3d;
+      margin: -512px 0 0 -512px;
+      /* perspective: 1024px; */
+      /* transform: rotate3d(1,1,1,45deg); */
+    }
+    .scene div{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-origin: 50% 50% 0;
+    }
+    .scene div:nth-child(1){
+      transform: translateZ(-512px);
+      /* background-color: rgba(196, 138, 67, 0.8); */
+      background: url('./image/neg-x.png');
+      background-size: 1024px;
+    }
+    .scene div:nth-child(2){
+      transform: rotateY(-90deg) translateZ(-512px);
+      /* background-color: rgba(120, 221, 111, 0.8); */
+      background: url('./image/pos-z.png');
+      background-size: 1024px;
+    }
+    .scene div:nth-child(3){
+      transform: rotateY(-180deg) translateZ(-512px);
+      /* background-color: rgba(49, 201, 228, 0.8); */
+      background: url('./image/pos-x.png');
+      background-size: 1024px;
+    }
+    .scene div:nth-child(4){
+      transform: rotateY(-270deg)  translateZ(-512px);
+      /* background-color: rgba(57, 127, 145, 0.8); */
+      background: url('./image/neg-z.png');
+      background-size: 1024px;
+    }
+    .scene div:nth-child(5){
+      transform: rotateX(-90deg) translateZ(-512px);
+      /* background-color: rgba(162, 190, 37, 0.8); */
+      background: url('./image/pos-y.png');
+      background-size: 1024px;
+    }
+    .scene div:nth-child(6){
+      transform: rotateX(90deg) translateZ(-512px);
+      /* background-color: rgba(212, 50, 185, 0.8); */
+      background: url('./image/neg-y.png');
+      background-size: 1024px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container" >
+    <div class="z">
+      <div class="scene" id="container">
+        <div>前</div>
+        <div>右</div>
+        <div>后</div>
+        <div>左</div>
+        <div>上</div>
+        <div>下</div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="./move.js"></script>
+  <script>
+    windowmove()
+  </script>
+</body>
+</html>

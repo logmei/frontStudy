@@ -9,6 +9,7 @@
 <body>
   <button id="button">点击</button>
   <script>
+    console.log(self,top)
     document.getElementById('button').addEventListener('click',throttle_(function(e){
       console.log('11111111111',e,e.target)
     },2000,true))

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./handWrite.js"></script>
+  </head>
+  <body>
+    <script>
+      const promise1 = new Promise((resolve,reject)=>{
+        resolve('promise')
+        // reject(2)
+      }).then(res=>{
+      return res+'111'
+    }).then(res=>{
+      return res+'222'
+    }).then(res=>{
+      console.log('Promise then',res)
+    })
+   var test1 = promise1.then(()=>{
+     return test1
+   })
+     const promise = new MyPromise((resolve,reject)=>{
+        resolve('MyPromise')
+        // reject(2)
+        // throw 'error'
+    }).then(res=>{
+      return res+'111'
+    }).then(res=>{
+      return res+'222'
+    }).then(res=>{
+      console.log('MyPromise then',res)
+    })
+    var test = promise.then(()=>{
+      return test
+    })
+    console.log(promise1)
+    console.log(promise)
+    </script>
+  </body>
+</html>

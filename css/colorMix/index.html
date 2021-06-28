@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <style>
+    .ss{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: tomato;
+      position: absolute;
+      top: 300px;
+      left: 0;
+      animation:bb-animation  2s 0.5s 5;
+      animation-timing-function: cubic-bezier(.25,1.97,.86,1.32);
+    }
+    .bb{
+      animation: ss-animation 2s 0.5s 5;
+      animation-timing-function: linear;
+    }
+
+    @keyframes bb-animation {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-200px);
+      }
+    }
+
+    @keyframes ss-animation {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(400px);
+      }
+    }
+
+    .image{
+      width: 500px;
+      height: 500px;  
+    }
+    .back{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      mix-blend-mode: darken;
+      background-color: yellow;
+    }
+    .image img{
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+  <body>
+    <div class="bb">
+      <div class="ss"></div>
+    </div>
+   <div class="image">
+     <div class="back"></div>
+     <img src="../../image/car.jpeg">
+   </div>
+  </body>
+</html>

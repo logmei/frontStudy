@@ -5,37 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="./common.js"></script>
 </head>
 <body>
+  <iframe src="http://localhost:8080" width="100%" height="100%"></iframe>
   <button id="button">点击</button>
   <script>
-    document.getElementById('button').addEventListener('click',debounce__(function(e){
+    console.log(self,top)
+  </script>
+  <script>
+    
+    document.getElementById('button').addEventListener('click',throttle(function(e){
       console.log('1111111111111',e,e.target)
     },1000,true))
-    function debounce(fun,wait){
-      let timer = 0
-      return function(...args){
-        if(timer) window.clearTimeout(timer)
-        timer = window.setTimeout(()=>{
-          fun.apply(this,args)
-        },wait)
-      }
-    }
+      
+ 
 
-    function debounce_(fun,wait=500,immediately=true){
-      let timer = 0 
-      return function(...args){
-        if(!timer && immediately){
-          fun.apply(this,args)
-          timer = window.setTimeout(()=>{},wait)
-        } else {
-          if(timer) window.clearTimeout(timer)
-          timer = window.setTimeout(()=>{
-            fun.apply(this,args)
-          },wait)
-        }
-      }
-    }
 
   </script>
 </body>

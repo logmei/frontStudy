@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <style>
+    html,body{
+      padding: 0 0;
+      margin: 0 0;
+    }
+    .imgDiv{
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+    }
+    .imgclass{
+      width: 100%;
+      animation: carouselAnimal 2s;
+      animation-iteration-count: 2;
+      animation-timing-function: ease-in-out;
+    }
+    .chooseOptions{
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .chooseOptions .item{
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background-color: #A8BAD9;
+      margin-right: 17px;
+    }
+    .chooseOptions .active{
+      position: absolute;
+      left: -11px;
+      bottom: 6px;
+      width: 31px;
+      height: 11px;
+      border-radius: 6px;
+      background-color: #fff;
+      animation: optionsAnimal 6s ;
+    }
+   @keyframes optionsAnimal {
+     0% {transform: translateX(0px);}
+     50% {transform: translateX(100%); } 
+     100% {transform: translateX(200%); } 
+   }
+   @keyframes carouselAnimal {
+     0% {transform: translateX(0%); } 
+     100% {transform: translateX(-100%); } 
+   }
+  </style>
+  <script>
+    const images = [
+      './banner.png',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.3lian.com%2F2014%2Ff5%2F2%2Fd%2F43.jpg&refer=http%3A%2F%2Fimg2.3lian.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626513181&t=eb15f5ca235baa54bc160f13920d218c',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1402%2F07%2Fc7%2F31066355_31066355_1391779709500_mthumb.jpg&refer=http%3A%2F%2Fimg.pconline.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626513181&t=29b96ce6ef28fba5c7e508db500c1625',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F140801%2F234992-140P10I41988.jpg&refer=http%3A%2F%2Fimg.taopic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626513181&t=f4fafa44111b1de47228fbf04dfb7c2d'
+    ]
+  </script>
+  <body>
+    <div class="imgDiv">
+      <img class="imgclass" src='./banner.png'>
+      <img class="imgclass" src='./banner.png'>
+      <img class="imgclass" src='./banner.png'>
+      <div class="chooseOptions">
+        <span class="active"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+      </div>
+    </div>
+  </body>
+</html>
