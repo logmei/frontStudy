@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clip-path动画</title>
+  <style>
+    .clip1,.clip2{
+      position: relative;
+      float: left;
+      margin: 30px;
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+    .clip1{
+      /* background: rgb(247, 238, 162); */
+      border:2px solid rgb(236, 221, 82);
+      animation:clip-animation 3s linear infinite
+    }
+    .clip2{
+      font-size: 32px;
+      letter-spacing: 10px;
+      font-weight: 500;
+      color: #fff;
+      background: rgb(236, 221, 82);
+      border-radius: 10px;
+    }
+    .clip2::after, .clip2::before{
+      content: '';
+      top: -20px;
+      left: -20px;
+      bottom: -20px;
+      right: -20px;
+      width: 240px;
+      height: 140px;
+      margin: auto;
+      position: absolute;
+      border:2px solid rgb(236, 221, 82);
+      border-radius: 10px;
+    }
+    .clip2::after{
+      animation:clip-animation-1 3s linear infinite;
+    }
+    .clip2::before{
+      animation:clip-animation 3s linear infinite;
+    }
+    @keyframes clip-animation-1 {
+      0%,100%{
+        clip-path: inset(95% 0 0 0);
+      }
+      25%{
+        clip-path: inset(0 95% 0 0);
+      }
+      50%{
+        clip-path: inset(0 0 95% 0);
+      }
+      75%{
+        clip-path: inset(0 0 0 95%);
+      }
+      
+    }
+
+    @keyframes clip-animation {
+      0%,100%{
+        clip-path: inset(0 0 95% 0);
+      }
+      25%{
+        clip-path: inset(0 0 0 95%);
+      }
+      50%{
+        clip-path: inset(95% 0 0 0);
+      }
+      75%{
+        clip-path: inset(0 95% 0 0);
+      }
+    }
+
+    .border-transform{
+      position: relative;
+      float: left;
+      margin: 20px;
+      width: 300px;
+      height: 100px;
+      background-color: #99cc31;
+      z-index: 0;
+    }
+    .border1{
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      width: 212px;
+      height: 62px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .border1::after{
+      position: absolute;
+      content: 'hover me';
+      top: 6px;
+      left: 6px;
+      margin: auto;
+      color: #99cc31;
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: #fff;
+      outline: 2px solid #99cc31;
+      overflow: hidden;
+      /* border-radius: 10px; */
+      z-index: 3;
+    }
+
+    .border1::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 212px;
+      height: 62px;
+      background-color: #fff;
+      transform-origin: 0 100%;
+      z-index: 2;
+      transform:rotate(-180deg)
+    }
+
+    .border1:hover::before{
+     transform:rotate(0deg);
+     transition: transform .8s linear
+    }
+
+  </style>
+</head>
+<body>
+  <div class="clip1"></div>
+  <div class="clip2">按钮</div>
+  <div class="border-transform">
+    <div class="border1"></div>
+  </div>
+</body>
+</html>

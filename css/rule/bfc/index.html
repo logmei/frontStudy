@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Formatting Context</title>
+</head>
+<body>
+  <h3>哪些会生成BFC？</h3>
+  <p>根元素</p>
+  <p>float属性不为none</p>
+  <p>position为absolute或fixed</p>
+  <p>display为inline-block,table-cell，table-caption,flex,inline-flex</p>
+  <p>overflow不为visible</p>
+  <h3>IFC（Inline Formatting Context）</h3>
+  <p>IFC的line box高度由包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响）</p>
+  <h3>FFC(Flex Formatting Context)</h3>
+  <p>display值为flex或者inline-flex的元素将会生成自适应容器</p>
+  <h3>GFC(Grid Formatting Context)</h3>
+  <p>当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器（grid container）
+    上定义网格定一行(grid definition rows)和网格定义列(grid definition columns)属性各在网格项目(grid item)上定义
+    网格行（grid row）和网格列（grid columns）为每个网格项目（grid item）定义位置和空间
+  </p>
+</body>
+</html>

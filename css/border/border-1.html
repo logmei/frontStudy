@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .firstDiv,.firstDiv-1,.firstDiv-2,.firstDiv-3,.firstDiv-4{
+      float: left;
+      margin: 20px !important;
+    }
+    .firstDiv{
+      position: relative;
+      border:1px solid green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv-1{
+      position: relative;
+      margin: 20px auto;
+      border:50px groove green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv-2{
+      position: relative;
+      margin: 20px auto;
+      border:50px ridge green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv-3{
+      position: relative;
+      margin: 20px auto;
+      border:50px inset green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv-4{
+      position: relative;
+      margin: 20px auto;
+      border:50px outset green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv-4{
+      position: relative;
+      margin: 20px auto;
+      border:50px double green;
+      width: 200px;
+      height: 100px;
+    }
+    .firstDiv::before,.firstDiv::after{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 60px;
+      transition: 0.8s ease-in;
+    }
+    .firstDiv:hover::after,.firstDiv:hover::before{
+      width: calc(100% + 38px);
+      height: calc(100% + 38px);
+      transition: 0.8s ease-in;
+    }
+    .firstDiv::before{
+      top: -20px;
+      left: -20px;
+      border-top:1px solid rebeccapurple;
+      border-left:1px solid rebeccapurple;
+    }
+    .firstDiv::after{
+      bottom: -20px;
+      right: -20px;
+      border-bottom:1px solid rebeccapurple;
+      border-right:1px solid rebeccapurple;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="firstDiv"></div>
+  <div class="firstDiv-1"></div>
+  <div class="firstDiv-2"></div>
+  <div class="firstDiv-3"></div>
+  <div class="firstDiv-4"></div>
+  <div class="firstDiv-5"></div>
+</body>
+</html>

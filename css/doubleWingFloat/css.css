@@ -1,0 +1,38 @@
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+div{
+  /* height: 150px; */
+}
+
+
+.left{
+  float:left;
+  width: 300px;
+  background-color: aquamarine;
+  margin-left: -100%;
+}
+.middle{
+  background-color: blanchedalmond;
+  float: left;
+  width: 100%;
+}
+.inner{
+  margin-left: 300px;
+}
+.right{
+  width: 200px;
+  float: right;
+  background-color: blueviolet;
+  margin-left: -200px;
+}
+/* 设置等高 */
+.container{
+  overflow: hidden;
+}
+.left,.right,.middle{
+  padding-bottom: 999999px;
+  margin-bottom: -999999px;
+}
