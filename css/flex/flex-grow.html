@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <style>
+    html,body{
+      padding: 0 0;
+      margin: 0 0;
+    }
+    .imgDiv{
+      display: flex;
+      width: 100%;
+      height: 200px;
+      background-color: burlywood;
+      align-items: center;
+    }
+
+    .item{
+      /* width: 100px; */
+      height: 100px;
+      background-color: #8a2be2;
+      border: 1px solid #333;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+    }
+    .item:nth-child(1){
+      flex: 1;
+    }
+    .item:nth-child(2){
+      flex: 2;
+    }
+    .item:nth-child(3){
+      flex: 3;
+    }
+   
+  </style>
+ 
+  <body>
+    <div class="imgDiv">
+      <div class="item">flex: 1;</div>
+      <div class="item"> flex: 2;</div>
+      <div class="item">flex: 3;</div>
+    </div>
+  </body>
+</html>
