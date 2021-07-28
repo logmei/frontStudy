@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Vue classes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" class="demo">
+   
+
+      <custom-input v-model="searchText"></custom-input>
+      {{searchText}}
+    </div>
+  </body>
+  <script>
+    const app = Vue.createApp({ data() {
+    return {
+      searchText: 'hello'
+    }
+  },})
+
+    app.component('custom-input', {
+      props: ['modelValue'],
+      emits: ['update:modelValue'],
+      template: `
+        <input
+          :value="modelValue"
+          @input="$emit('update:modelValue', $event.target.value)"
+        >
+      `,
+     
+    })
+    app.mount('#app')
+  </script>
+</html>
