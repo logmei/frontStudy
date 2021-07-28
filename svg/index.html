@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+  function myNew1(){
+  // 创建新的对象
+  const obj = {}
+ // 取出构造函数
+  const constructor = Array.prototype.shift.call(arguments)
+// 判断是否为函数
+  if(typeof constructor !== 'function') return {}
+// 指定proto
+Object.setPrototypeOf(obj,constructor.prototype)
+// 绑定this
+const result = constructor.apply(obj,arguments)
+return typeof result === 'object'?result:obj
+  
+}
+
+    function Test(...params){
+      this.age = 10
+  console.log(this.name,JSON.stringify(params))
+  return {a:1,b:3}
+}
+
+  </script>
+</head>
+<body>
+  <!-- viewBox 这个属性可以理解为我们微信聊天时的截图操作。viewBox 属性的四个参数，前两个表示截图起点，后面两个表示截图终点，均是以左上角定点为原点 -->
+  <svg 
+  class="svg" 
+  style="background-color: yellow;" 
+  width="200" 
+  height="200"
+  viewBox="0,0,50,50">
+    <circle cx="50" cy="50" r="49" stroke="black" stroke-width="1" fill="red"></circle>
+  </svg>
+
+  <svg 
+  class="svg" 
+  style="background-color: blue;" 
+  width="200" 
+  height="200">
+   <path d="M0 0 A45 45, 0, 0, 0, 45 45 L45 0z" fill="green">
+   </path>
+  </svg>
+
+  <svg
+  style="background-color: blue;" 
+  width="200" 
+  height="200">
+    <rect x="60" y="10" rx="10" ry="10" width="100" height="50" fill="red"></rect>
+  </svg>
+</body>
+</html>
