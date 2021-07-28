@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>clip-path动画</title>
   <style>
-    .clip1,.clip2{
+    .clip1,.clip2,.clip3{
       position: relative;
       float: left;
       margin: 30px;
@@ -136,6 +136,23 @@
      transition: transform .8s linear
     }
 
+    .clip3{
+      border:10px solid;
+      border-image: linear-gradient(45deg,gold,deeppink) 1;
+      clip-path: inset(0px round 10px);
+      filter: hue-rotate(360deg);
+      animation: huerotate 3s infinite;
+    }
+
+    @keyframes huerotate {
+      0%{
+        filter: hue-rotate(0deg);
+      }
+      100%{
+        filter: hue-rotate(360deg);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -144,5 +161,6 @@
   <div class="border-transform">
     <div class="border1"></div>
   </div>
+  <div class="clip3"></div>
 </body>
 </html>
