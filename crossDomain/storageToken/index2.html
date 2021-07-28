@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id='button'>新页面</button>
+  <script>
+    window.addEventListener('message',(e)=>{
+      alert(e)
+    })
+    function setCookie(name, value, day, path, domain)
+    {
+      day = day || 30;
+      path = path || '/';
+      var str = name + '=' + value + '; ';
+      if(day) str += 'expires=' + new Date(Date.now() + day * 24 * 3600 * 1000).toGMTString() + '; ';
+      if(path) str += 'path=' + path + '; ';
+      if(domain) str += 'domain=' + domain;
+      document.cookie = str;
+    }
+    xei.setCookie('test1', 'abcd', 30, '/'); // 成功，默认写入当前域名
+    xei.setCookie('test2', 'abcd', 30, '/', 'blog.xiaoming.com'); // 成功，前面追加一个“.”
+    xei.setCookie('test3', 'abcd', 30, '/', 'abcd.xiaoming.com'); // 写入不成功
+    xei.setCookie('test4', 'abcd', 30, '/', '.xiaoming.com'); // 成功
+    xei.setCookie('test5', 'abcd', 30, '/', 'xiaoming.com'); // 成功，前面追加一个“.”
+    xei.setCookie('test6', 'abcd', 30, '/', 'www.qq.com'); // 写入不成功
+  </script>
+</body>
+</html>
