@@ -180,3 +180,19 @@ function throttle(fn,wait,isImmediately){
     }
   }
 }
+
+function myArray(x){
+  this._value = x
+}
+myArray.of = x=>new myArray(x)
+myArray.prototype.map= function(f){
+  const result = []
+  for(let i = 0;i<this._value.length;i++){
+    result[i] = f(this._value[i])
+  }
+  return myArray.of(result)
+}
+
+const arr = new myArray([1,2,3])
+const newarr = arr.map(v=>v+2)
+console.log(newarr)
