@@ -9,7 +9,7 @@
         console.log('Connection to server opened');
     }
     function sendMessage() {
-        ws.send('message');
+        ws.send(JSON.stringify({type: 'REGISTER', userId: 1}));
     }
 
     // react native 中使用websocket需要做adb的指向adb reverse tcp:8181 tcp:8181
