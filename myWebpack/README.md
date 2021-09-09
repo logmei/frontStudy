@@ -1,3 +1,11 @@
+# 运行 
+``` 
+node run.js
+
+```
+//bundle文件会生成到dist目录下
+
+# 详细说明
 ## 手写webpack
 ### 通过fs读写文件:
  ```
@@ -56,7 +64,7 @@
     ]
     */
   ```
-  * babel.transformFromAstSync:将内容转浏览器能识别的代码
+  * babel.transformFromAstSync:将内容转换为浏览器能识别的代码
   ```
    var babel = require('@babel/core')
    const transformContent = babel.transformFromAstAsync(parseAst,null,{presets:["@babel/preset-env"]}).then(res=>{
@@ -127,19 +135,20 @@
 
 
 ### 生成bundle文件
-> 通过transform生成的code中含有require和exports
+> 通过transform生成的code中含有require和exports，因此需要定义require函数和exports对象
 #### 定义require函数返回结果
 ```
  function require(moduleId){
     // 1、定义exports
     var exports = {}
     // 2、运行代码
+    // 注意：这样写会有个问题moduleId为相对路径，需要进行转换，具体书写请看’完成bundle文件内容‘
     eval(modules[moduleId].code)
     // 3、返回运行结果
     return exports
   }
 ```
-#### bundle文件内容
+#### 完成bundle文件内容
 ```
 const newModules = this.modules.reduce((lastModule,curr)=>{
       return {...lastModule,[curr.filepath]:curr}
@@ -185,3 +194,4 @@ const newModules = this.modules.reduce((lastModule,curr)=>{
     
     )(${JSON.stringify(newModules)})`
 ```
+详细内容请查看：https://github.com/logmei/frontStudy/blob/master/myWebpack/lib/webpack.js
