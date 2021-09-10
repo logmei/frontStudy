@@ -1,2 +1,3 @@
 import b from './b.js';
-export default 'aaaaa'+b
+// import './index.less';
+console.log('index'+b)

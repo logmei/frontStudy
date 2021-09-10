@@ -1,13 +1,7 @@
-
-const path = require('path');
-
-module.exports = {
-  entry:'./src/index.js',
-  output:{
-    path:path.resolve('dist'),
-    filename: 'bundle.js'
-  },
-  resolveLoader:{
+# 自定义loader
+## 解析配置
+```
+ resolveLoader:{
     modules:[
       'node_modules',
       path.resolve(__dirname,'loaders')
@@ -30,4 +24,4 @@ module.exports = {
       }
     ]
   }
-}
+```
