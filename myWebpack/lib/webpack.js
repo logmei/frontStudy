@@ -6,7 +6,6 @@ var traverse = require('@babel/traverse').default
 class myWebpack{
   constructor(options){
     this.entry = options.entry;
-    this.resolvePath = path.sep+path.dirname(options.entry)
     this.outputFile = path.join(options.output.path,options.output.filename)
     this.modules = []
   }
@@ -29,16 +28,15 @@ class myWebpack{
     // 依赖关系
     let dependencies = {} 
     // console.log(parseAst.program.body)
-    // const rePath = this.resolvePath
     // traverse(parseAst,{
     //   ImportDeclaration(v){
-    //     const modulePath = '.'+path.join(rePath,v.node.source.value)
+    //     const modulePath = path.resolve(path.dirname(this.entry),v.source.value);
     //     dependencies[v.node.source.value] = modulePath
     //   }
     // })
     parseAst.program.body.forEach(v=>{
       if(v.type === 'ImportDeclaration'){
-        const modulePath = '.'+path.join(this.resolvePath,v.source.value)
+        const modulePath = path.resolve(path.dirname(this.entry),v.source.value);
         dependencies[v.source.value] = modulePath
       }
     })
@@ -66,7 +64,7 @@ class myWebpack{
       
       // 运行依赖文件的代码通过module.exports返回
       function require(moduleId){
-        // 将相对路径改为觉得路径
+        // 将相对路径改为绝对路径
         function reRequire(path){
           var newPath = modules[moduleId].dependencies[path] 
           if(newPath){
