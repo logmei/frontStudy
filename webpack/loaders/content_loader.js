@@ -1,6 +1,8 @@
 
+var path = require('path')
 module.exports = function(source){
-  
+  // console.log(this.resourcePath)
+  var insert = path.basename(this.resourcePath) === 'index.js'
   var divHtml = `
    ;(
      function(){
@@ -12,6 +14,6 @@ module.exports = function(source){
      }
    )(); 
   `
-  console.log('content_loader',source,divHtml)
-  return source + divHtml
+  // console.log('content_loader',source,divHtml)
+  return insert?source + divHtml:source
 }

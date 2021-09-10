@@ -1,3 +1,3 @@
 import b from './b.js';
-// import './index.less';
+import './index.less';
 console.log('index'+b)
