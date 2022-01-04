@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const PromiseState = {
+      pedding: 'pedding',
+      successed: 'resolved',
+      rejected: 'rejected'
+    }
+
+    function myPromise(fn) {
+      this.state = PromiseState.pedding
+      this.result = ''
+      this.resolveCallBacks = []
+      this.rejectCallBacks = []
+
+      if (typeof fn !== 'function') {
+        throw new Error('params not function')
+      }
+      fn(this.resolve.bind(this), this.reject.bind(this))
+    }
+
+
+    myPromise.prototype.resolve = function (v) {
+      this.state = PromiseState.successed
+      this.result = typeof v === 'function' ? v(this.result) : v
+      this.resolveCallBacks.map(callback => { this.result = callback(this.result) })
+    }
+
+    myPromise.prototype.reject = function (rejectMsg) {
+      this.state = PromiseState.rejected
+      this.result = rejectMsg
+      this.rejectCallBacks.map(callback => { this.result = callback(this.result) })
+    }
+
+    myPromise.prototype.then = function (resolveCB, rejectCB) {
+      const that = this
+      return new myPromise((resolve, reject) => {
+        switch (that.state) {
+          case PromiseState.pedding:
+            that.resolveCallBacks.push(()=>resolve(resolveCB(that.result)))
+            that.rejectCallBacks.push(()=>reject(rejectCB(that.result)))
+            break;
+          case PromiseState.successed:
+            resolve(that.result)
+            break;
+          case PromiseState.rejected:
+            reject(that.result)
+            break;
+          default: ;
+        }
+
+
+      })
+    }
+
+    var promise = new myPromise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(100)
+      }, 1000)
+    }, 'init').then(res => {
+      console.log('then', res)
+      return 200
+    }, () => { }, 'then1').then(res => {
+      console.log('then2', res)
+    }, () => { }, 'then2')
+  </script>
+</body>
+
+</html>

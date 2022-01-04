@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡和捕获</title>
+  <style>
+    #div1{
+      width: 800px;
+      height: 600px;
+      background-color: aqua;
+    }
+
+    #div2{
+      width: 600px;
+      height: 400px;
+      background-color: burlywood;
+    }
+
+    #button{
+      width: 60px;
+      height: 40px;
+      background-color: cadetblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    <div id="div2">
+      <button id="button">点击</button>
+    </div>
+  </div>
+
+  <script>
+    // 第三个参数可以是布尔值useCapture，也可以是对象
+    // 布尔值默认为false
+    /**
+     * 若是对象，其属性为：
+     * capture:布尔值，和useCapture作用一样
+     * once：布尔值，为true表示该回调只会调用一次，调用后会移除监听
+     * passive:布尔值，表示永远不会调用preventDefault
+     * 
+     ** */
+    document.getElementById('div1').addEventListener('click',(e)=>{
+      console.log('div1')
+      e.stopPropagation()
+    },false)
+    document.getElementById('div2').addEventListener('click',(e)=>{
+      console.log('div2')
+    },true)
+    document.getElementById('button').addEventListener('click',(e)=>{
+      // 一般来说，如果我们只希望事件只触发在目标上，这时候可以使用stopPropagation来阻止事件的进一步传播。
+      // 通常我们认为stopPropagation是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。
+      // stopImmediatePropagation同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件
+      // e.stopImmediatePropagation()
+      e.stopPropagation()
+      console.log('button')
+    })
+    document.getElementById('button').addEventListener('click',(e)=>{
+      console.log('button defaultOtheraction')
+    })
+  </script>
+</body>
+</html>

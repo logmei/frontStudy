@@ -30,7 +30,7 @@ app.use(async (ctx,next)=>{
 })
 
 app.use(async ctx=>{
-  ctx.body = 'hello world'
+  ctx.response.body = `<h1>Hello, koa2!</h1><script>console.log('user agent',navigator.userAgent)</script>`;
 })
 
 app.listen(3000,()=>{
